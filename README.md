@@ -5,7 +5,7 @@ SpaceVue Dashboard is a React-based web application designed for monitoring and 
 ## Features
 
 - **Tabular Data:** Utilize AG-Grid to display space mission information in a table format.
-- **Interactive Charts:** Incorporate dynamic charts Donut chart for visualizing mission data.
+- **Interactive Charts:** Incorporate dynamic charts Bar chart for visualizing mission data.
 - **User Authentication:** Simple login functionality for access to the dashboard.
 
 ## Getting Started
