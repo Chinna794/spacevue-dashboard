@@ -97,6 +97,11 @@ const Dashboard = () => {
           <AgGridReact
             columnDefs={[{ headerName: 'Sr. No', field: 'srNo', width: 70 }, ...columnDefs]}
             rowData={dataWithSrNo}
+      return (
+        <div className="ag-theme-alpine" style={{ height: 400, width: '87%' }}>
+          <AgGridReact
+            columnDefs={columnDefs}
+            rowData={rowData}
             pagination={true}
             paginationPageSize={10}
             onGridReady={onGridReady}
