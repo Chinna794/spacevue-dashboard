@@ -1,0 +1,54 @@
+/* src/components/features/Dashboard/Dashboard.css */
+
+.dashboard-container {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+  }
+  
+  .jump-to-page-container {
+    margin-top: 10px;
+  }
+  
+  .jump-to-page-container label {
+    margin-right: 10px;
+  }
+  
+  .jump-to-page-container input {
+    width: 50px;
+    padding: 5px;
+  }
+  
+  .jump-to-page-container button {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+  }
+  
+  .jump-to-page-container button:hover {
+    background-color: #45a049;
+  }
+  
+  .data-and-chart-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .data-table-container {
+    margin-bottom: 20px;
+  }
+  
+  .bar-chart-container {
+    width: 50%;
+  }
+  
+  .card-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
