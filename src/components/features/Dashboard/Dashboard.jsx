@@ -56,6 +56,7 @@ const Dashboard = () => {
   };
 
   const columnDefs = [
+    
     { headerName: 'Mission Name', field: 'mission' },
     { headerName: 'Launch Company', field: 'company' },
     { headerName: 'Location', field: 'location' },
@@ -90,11 +91,14 @@ const Dashboard = () => {
 
   const renderGrid = () => {
     if (rowData.length > 0) {
+      // Add serial number to each row
+      const dataWithSrNo = rowData.map((row, index) => ({ srNo: index + 1, ...row }));
+  
       return (
         <div className="ag-theme-alpine" style={{ height: 400, width: '87%' }}>
           <AgGridReact
-            columnDefs={columnDefs}
-            rowData={rowData}
+            columnDefs={[{ headerName: 'Sr. No', field: 'srNo', width:70 }, ...columnDefs]}
+            rowData={dataWithSrNo}
             pagination={true}
             paginationPageSize={10}
             onGridReady={onGridReady}
@@ -107,6 +111,7 @@ const Dashboard = () => {
       return <p>Loading...</p>;
     }
   };
+  
 
   const renderBarChart = () => (
     <div className="card-container">
