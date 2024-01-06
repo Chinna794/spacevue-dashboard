@@ -1,5 +1,3 @@
-// src/components/features/Dashboard/Dashboard.js
-
 import React, { useState, useEffect, useRef } from 'react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
@@ -56,6 +54,7 @@ const Dashboard = () => {
   };
 
   const columnDefs = [
+    { headerName: 'Sr. No', field: 'srNo', width: 80 },
     { headerName: 'Mission Name', field: 'mission' },
     { headerName: 'Launch Company', field: 'company' },
     { headerName: 'Location', field: 'location' },
@@ -90,6 +89,14 @@ const Dashboard = () => {
 
   const renderGrid = () => {
     if (rowData.length > 0) {
+      // Add serial number to each row
+      const dataWithSrNo = rowData.map((row, index) => ({ srNo: index + 1, ...row }));
+
+      return (
+        <div className="ag-theme-alpine" style={{ height: 400, width: '87%' }}>
+          <AgGridReact
+            columnDefs={[{ headerName: 'Sr. No', field: 'srNo', width: 70 }, ...columnDefs]}
+            rowData={dataWithSrNo}
       return (
         <div className="ag-theme-alpine" style={{ height: 400, width: '87%' }}>
           <AgGridReact
