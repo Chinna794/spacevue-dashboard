@@ -1,12 +1,12 @@
 // src/components/features/Dashboard/Dashboard.js
 
-import React, { useState, useEffect, useRef } from 'react';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
-import { AgGridReact } from 'ag-grid-react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from 'recharts';
-import '../Dashboard/Dashboard.css';
-import LoginPage from '../LoginPage/LoginPage';
+import React, { useState, useEffect, useRef } from "react";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";
+import { AgGridReact } from "ag-grid-react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from "recharts";
+import "../Dashboard/Dashboard.css";
+import LoginPage from "../LoginPage/LoginPage";
 
 const Dashboard = () => {
   const [rowData, setRowData] = useState([]);
@@ -26,16 +26,21 @@ const Dashboard = () => {
   }, [loggedIn]);
 
   const fetchMissionData = () => {
-    fetch('https://www.ag-grid.com/example-assets/space-mission-data.json')
+    fetch("https://www.ag-grid.com/example-assets/space-mission-data.json")
       .then((response) => response.json())
       .then((data) => {
         setRowData(data);
-        const successCount = data.filter((mission) => mission.successful).length;
+        const successCount = data.filter(
+          (mission) => mission.successful
+        ).length;
         const failureCount = data.length - successCount;
-        setSuccessData([{ name: 'Success', value: successCount }, { name: 'Failure', value: failureCount }]);
+        setSuccessData([
+          { name: "Success", value: successCount },
+          { name: "Failure", value: failureCount },
+        ]);
       })
       .catch((error) => {
-        console.error('Error fetching mission data:', error.message);
+        console.error("Error fetching mission data:", error.message);
         // Optionally, you can set an error state or show an error message to the user.
       });
   };
@@ -56,15 +61,14 @@ const Dashboard = () => {
   };
 
   const columnDefs = [
-    
-    { headerName: 'Mission Name', field: 'mission' },
-    { headerName: 'Launch Company', field: 'company' },
-    { headerName: 'Location', field: 'location' },
-    { headerName: 'Date', field: 'date' },
-    { headerName: 'Time', field: 'time' },
-    { headerName: 'Rocket Type', field: 'rocket' },
-    { headerName: 'Price', field: 'price' },
-    { headerName: 'Mission Outcome', field: 'successful' },
+    { headerName: "Mission Name", field: "mission" },
+    { headerName: "Launch Company", field: "company" },
+    { headerName: "Location", field: "location" },
+    { headerName: "Date", field: "date" },
+    { headerName: "Time", field: "time" },
+    { headerName: "Rocket Type", field: "rocket" },
+    { headerName: "Price", field: "price" },
+    { headerName: "Mission Outcome", field: "successful" },
   ];
 
   const renderDashboardContent = () => (
@@ -92,12 +96,18 @@ const Dashboard = () => {
   const renderGrid = () => {
     if (rowData.length > 0) {
       // Add serial number to each row
-      const dataWithSrNo = rowData.map((row, index) => ({ srNo: index + 1, ...row }));
-  
+      const dataWithSrNo = rowData.map((row, index) => ({
+        srNo: index + 1,
+        ...row,
+      }));
+
       return (
-        <div className="ag-theme-alpine" style={{ height: 400, width: '87%' }}>
+        <div className="ag-theme-alpine" style={{ height: 400, width: "87%" }}>
           <AgGridReact
-            columnDefs={[{ headerName: 'Sr. No', field: 'srNo', width:70 }, ...columnDefs]}
+            columnDefs={[
+              { headerName: "Sr. No", field: "srNo", width: 70 },
+              ...columnDefs,
+            ]}
             rowData={dataWithSrNo}
             pagination={true}
             paginationPageSize={10}
@@ -111,7 +121,6 @@ const Dashboard = () => {
       return <p>Loading...</p>;
     }
   };
-  
 
   const renderBarChart = () => (
     <div className="card-container">
@@ -128,7 +137,15 @@ const Dashboard = () => {
     </div>
   );
 
-  return <div className="dashboard-container">{!loggedIn ? <LoginPage onLogin={handleLogin} /> : renderDashboardContent()}</div>;
+  return (
+    <div className="dashboard-container">
+      {!loggedIn ? (
+        <LoginPage onLogin={handleLogin} />
+      ) : (
+        renderDashboardContent()
+      )}
+    </div>
+  );
 };
 
 export default Dashboard;
