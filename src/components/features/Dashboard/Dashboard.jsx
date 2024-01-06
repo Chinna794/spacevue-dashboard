@@ -90,7 +90,6 @@ const Dashboard = () => {
 
   const renderGrid = () => {
     if (rowData.length > 0) {
-
       return (
         <div className="ag-theme-alpine" style={{ height: 400, width: '87%' }}>
           <AgGridReact
